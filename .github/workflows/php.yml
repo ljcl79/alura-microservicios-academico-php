@@ -22,9 +22,7 @@ jobs:
         coverage: none
     
     - name: Composer Install
-      uses: php-actions/composer@v6
-      with:
-        php_extensions: sockets pdo_pgsql
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
     
     - name: PHPCS
       run: composer run phpcs
