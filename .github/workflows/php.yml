@@ -16,7 +16,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1'
+        php-version: '8.0'
         extensions: sockets, pdo_pgsql
         # Esto deshabilita Xdebug para que el proceso sea mucho más rápido
         coverage: none
