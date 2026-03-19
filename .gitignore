@@ -2,3 +2,4 @@ vendor
 .idea/
 produce.php
 entrypoint.sh
+docker-compose.yml

@@ -12,6 +12,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v6
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        extensions: sockets, pdo_pgsql
+        # Esto deshabilita Xdebug para que el proceso sea mucho más rápido
+        coverage: none
     
     - name: Composer Install
       uses: php-actions/composer@v6
