@@ -21,7 +21,7 @@ function rabbitMqConnection(): AMQPStreamConnection
             sleep(5);
             echo 'Retrying' . PHP_EOL;
         }
-    } while(!isset($connection));
+    } while (!isset($connection));
 
     return $connection;
 }
@@ -29,23 +29,24 @@ function rabbitMqConnection(): AMQPStreamConnection
 function sendMailTo(OODBBean $student): void
 {
     $mensagem = <<<FIM
-    Olá, $student->name! Seu pagamento foi confirmado e sua matrícula foi criada com sucesso.
-    Para acessar sua conta e começar a estudar conosco, acesse: http://localhost:4200/login.
-    Seus dados de acesso são:
-    E-mail: $student->email
-    Senha: 123456
+    Hola, $student->name! Su pago ha sido confirmado y su matrícula ha sido creada con éxito.
+    Para acceder a su cuenta y comenzar a estudiar con nosotros, acceda a: http://localhost:4200/login.
+    Sus datos de acceso son:
+    Correo electrónico: $student->email
+    Contraseña: 123456
     
-    Bons estudos!
+    ¡Buena suerte!
     FIM;
 
     $usuario = getenv('GMAIL_USER');
+
     $email = (new Email())
         ->from($usuario)
         ->to($student->email)
         ->subject('Matrícula confirmada')
         ->text($mensagem);
 
-    $senha = getenv('GMAIL_PASSWORD');
+    $senha = urlencode(getenv('GMAIL_PASSWORD'));
     $transport = Transport::fromDsn("gmail+smtp://$usuario:$senha@default");
     $mailer = new Mailer($transport);
     $mailer->send($email);
