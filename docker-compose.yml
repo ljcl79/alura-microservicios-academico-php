@@ -20,8 +20,8 @@ services:
       RABBITMQ_PORT: 5672
       RABBITMQ_USERNAME: guest
       RABBITMQ_PASSWORD: guest
-      GMAIL_USER: 'tu-email@gmail.com'
-      GMAIL_PASSWORD: 'tu-clave'
+      GMAIL_USER: 'leocastillo.aluralatam@gmail.com'
+      GMAIL_PASSWORD: 'hebandthpmjyyxky'
 
   rabbitmq:
     image: rabbitmq
