@@ -11,7 +11,7 @@ R::setup(getenv('DB_DSN'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
 
 $connection = rabbitMqConnection();
 $channel = $connection->channel();
- 
+
 $queue = 'student_enrollment';
 //Parámetros sin cambios
 $channel->exchange_declare('client_enrolled', 'fanout', durable: true, auto_delete: false);
