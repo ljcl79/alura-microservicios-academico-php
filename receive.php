@@ -13,7 +13,7 @@ $connection = rabbitMqConnection();
 $channel = $connection->channel();
 
 $queue = 'student_enrollment';
-//Parámetros sin cambios
+
 $channel->exchange_declare('client_enrolled', 'fanout', durable: true, auto_delete: false);
 $channel->queue_declare($queue, auto_delete: false);
 $channel->queue_bind($queue, 'client_enrolled');
